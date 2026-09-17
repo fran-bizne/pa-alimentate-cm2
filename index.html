@@ -1,0 +1,521 @@
+<title>PA Aliméntate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF5EF;
+    --cream-hi:#FFFFFF;
+    --paper:#F3E9E1;
+    --ink:#241019;
+    --ink-soft:#63434C;
+    --maroon-900:#33081D;
+    --maroon-700:#8C1044;
+    --maroon-600:#B4145A;
+    --maroon-500:#CE3D74;
+    --gold:#D89A3D;
+    --gold-ink:#7A5320;
+    --green:#2E7D46;
+    --line:#EAD9DC;
+    --shadow: 0 20px 40px -24px rgba(51,8,29,0.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --cream:#1C1013;
+      --cream-hi:#241419;
+      --paper:#2A1720;
+      --ink:#F7EAEE;
+      --ink-soft:#D9BAC5;
+      --maroon-900:#33081D;
+      --maroon-700:#CE3D74;
+      --maroon-600:#DE5487;
+      --maroon-500:#E87BA0;
+      --gold:#E8B564;
+      --gold-ink:#F3D9A6;
+      --green:#4CAF6C;
+      --line:#432430;
+      --shadow: 0 20px 44px -20px rgba(0,0,0,0.55);
+    }
+  }
+  :root[data-theme="dark"]{
+    --cream:#1C1013;
+    --cream-hi:#241419;
+    --paper:#2A1720;
+    --ink:#F7EAEE;
+    --ink-soft:#D9BAC5;
+    --maroon-900:#33081D;
+    --maroon-700:#CE3D74;
+    --maroon-600:#DE5487;
+    --maroon-500:#E87BA0;
+    --gold:#E8B564;
+    --gold-ink:#F3D9A6;
+    --green:#4CAF6C;
+    --line:#432430;
+    --shadow: 0 20px 44px -20px rgba(0,0,0,0.55);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Plus Jakarta Sans','Manrope',system-ui,sans-serif;
+    font-weight:700;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  p{margin:0;}
+  a{color:inherit;}
+  img{display:block;max-width:100%;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--maroon-700);
+    background:color-mix(in srgb, var(--maroon-700) 10%, transparent);
+    padding:7px 14px;border-radius:999px;
+  }
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:17px;
+    padding:16px 30px;border-radius:14px;text-decoration:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  .btn-primary{
+    background:linear-gradient(135deg, var(--maroon-600), var(--maroon-900));
+    color:#fff;
+    box-shadow:0 14px 28px -12px rgba(124,18,48,0.55);
+  }
+  .btn-ghost{
+    background:transparent;border-color:var(--line);color:var(--ink);
+  }
+  .btn-whatsapp{
+    background:var(--green);color:#fff;
+    box-shadow:0 14px 28px -12px rgba(46,125,70,0.5);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;top:0;z-index:40;
+    background:color-mix(in srgb, var(--cream) 88%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 24px;max-width:1080px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:19px;}
+  .brand-mark{height:36px;width:auto;flex:none;display:block;}
+  .nav .btn{padding:10px 18px;font-size:14px;border-radius:10px;}
+  .nav-links{display:none;}
+  @media (min-width:720px){
+    .nav-links{display:flex;gap:26px;font-size:14px;font-weight:700;color:var(--ink-soft);}
+    .nav-links a:hover{color:var(--maroon-700);}
+  }
+
+  /* ---------- INSTITUTIONAL BAR ---------- */
+  .institutional-bar{
+    background:var(--paper);border-bottom:1px solid var(--line);
+    padding:14px 0;
+  }
+  .institutional-bar .wrap{
+    display:flex;align-items:center;justify-content:center;gap:14px;
+    text-align:center;flex-wrap:wrap;
+  }
+  .institutional-bar img{height:38px;width:auto;flex:none;}
+  .institutional-bar .divider{width:1px;height:28px;background:var(--line);flex:none;}
+  .institutional-bar p{
+    font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--ink-soft);
+    max-width:52ch;
+  }
+  .institutional-bar strong{color:var(--maroon-700);}
+  @media (max-width:560px){ .institutional-bar .divider{display:none;} }
+
+  /* ---------- OFFICIAL CARD (que-es) ---------- */
+  .official-card{
+    margin-top:24px;display:flex;gap:18px;align-items:center;
+    padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--cream-hi);
+  }
+  .official-card img{height:64px;width:auto;flex:none;}
+  .official-card h4{font-size:14.5px;font-weight:800;color:var(--ink);}
+  .official-card p{margin-top:4px;font-size:13.5px;color:var(--ink-soft);}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:64px 0 48px;}
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .hero h1{font-size:clamp(34px,5vw,52px);line-height:1.06;letter-spacing:-.01em;}
+  .hero h1 em{font-style:normal;color:var(--maroon-700);}
+  .hero-sub{margin-top:20px;font-size:18px;color:var(--ink-soft);max-width:46ch;}
+  .hero-ctas{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap;}
+  .hero-note{margin-top:16px;font-size:13px;color:var(--ink-soft);display:flex;align-items:center;gap:8px;}
+  .dot-live{width:8px;height:8px;border-radius:50%;background:var(--green);flex:none;box-shadow:0 0 0 3px color-mix(in srgb, var(--green) 25%, transparent);}
+  .creators-chip{
+    margin-top:14px;display:inline-flex;align-items:center;gap:10px;
+    padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--line);background:var(--cream-hi);
+  }
+  .creators-chip img{height:26px;width:26px;border-radius:7px;flex:none;}
+  .creators-chip span{font-size:12.5px;color:var(--ink-soft);}
+  .creators-chip b{color:var(--ink);}
+
+  /* phone mock */
+  .phone{
+    position:relative;justify-self:center;width:min(260px,78vw);
+    border-radius:34px;background:var(--maroon-900);
+    padding:10px;box-shadow:var(--shadow);
+  }
+  .phone-screen{
+    background:var(--cream-hi);border-radius:24px;overflow:hidden;
+  }
+  .phone-screen img{width:100%;display:block;}
+
+  /* ---------- VIDEO ---------- */
+  .video-section .wrap{
+    display:grid;grid-template-columns:.85fr 1.15fr;gap:52px;align-items:center;
+  }
+  @media (max-width:860px){ .video-section .wrap{grid-template-columns:1fr;} }
+  .video-frame{
+    justify-self:center;width:min(300px,84vw);border-radius:28px;
+    background:var(--maroon-900);padding:10px;box-shadow:var(--shadow);
+  }
+  .video-frame video{width:100%;border-radius:20px;display:block;aspect-ratio:9/16;object-fit:cover;background:#000;}
+  .video-copy h2{font-size:clamp(26px,3.4vw,36px);}
+  .video-copy p{margin-top:16px;color:var(--ink-soft);font-size:17px;max-width:48ch;}
+  .video-quote{
+    margin-top:22px;padding:16px 18px;border-left:3px solid var(--maroon-600);
+    background:var(--paper);border-radius:0 12px 12px 0;font-size:15px;color:var(--ink);font-style:italic;
+  }
+
+  /* ---------- STEPS ---------- */
+  .steps-section{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .section-head{max-width:60ch;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px);}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:17px;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  @media (max-width:920px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .steps{grid-template-columns:1fr;} }
+  .step{
+    background:var(--cream-hi);border:1px solid var(--line);border-radius:18px;padding:24px 20px;
+    display:flex;flex-direction:column;gap:14px;position:relative;
+  }
+  .step-num{
+    font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:14px;color:var(--maroon-700);
+    width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+    background:color-mix(in srgb, var(--maroon-700) 12%, transparent);
+  }
+  .step h3{font-size:17px;}
+  .step p{color:var(--ink-soft);font-size:14.5px;}
+  .step-arrow{
+    display:none;position:absolute;right:-24px;top:50%;transform:translateY(-50%);
+    color:var(--line);font-size:20px;
+  }
+  @media (min-width:921px){ .step:not(:last-child) .step-arrow{display:block;} }
+
+  /* ---------- WHAT IS IT ---------- */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
+  @media (max-width:860px){ .about-grid{grid-template-columns:1fr;} }
+  .about-copy p + p{margin-top:16px;}
+  .about-copy p{color:var(--ink-soft);font-size:17px;}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .stat{
+    background:var(--cream-hi);border:1px solid var(--line);border-radius:16px;padding:20px;
+  }
+  .stat b{
+    display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:28px;color:var(--maroon-700);
+  }
+  .stat span{font-size:13px;color:var(--ink-soft);}
+
+  /* ---------- FEATURES ---------- */
+  .features-section{background:var(--maroon-900);color:#fff;}
+  .features-section .section-head h2{color:#fff;}
+  .features-section .section-head p{color:color-mix(in srgb, #fff 70%, transparent);}
+  .features{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:color-mix(in srgb,#fff 12%, transparent);border-radius:20px;overflow:hidden;}
+  @media (max-width:920px){ .features{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .features{grid-template-columns:1fr;} }
+  .feature{background:var(--maroon-900);padding:26px 22px;display:flex;flex-direction:column;gap:10px;}
+  .feature-ic{font-size:22px;}
+  .feature h3{color:#fff;font-size:16px;}
+  .feature p{color:color-mix(in srgb,#fff 68%, transparent);font-size:14px;}
+
+  /* ---------- FAQ ---------- */
+  .faq{display:flex;flex-direction:column;gap:12px;max-width:760px;}
+  .faq-item{border:1px solid var(--line);border-radius:14px;background:var(--cream-hi);overflow:hidden;}
+  .faq-item summary{
+    cursor:pointer;list-style:none;padding:18px 20px;font-weight:700;font-size:15.5px;
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .chev{color:var(--maroon-700);font-size:14px;transition:transform .2s ease;flex:none;}
+  .faq-item[open] summary .chev{transform:rotate(45deg);}
+  .faq-item .faq-a{padding:0 20px 20px;color:var(--ink-soft);font-size:15px;max-width:65ch;}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    border-radius:28px;padding:56px 40px;text-align:center;
+    background:linear-gradient(135deg, var(--maroon-600), var(--maroon-900));
+    color:#fff;box-shadow:var(--shadow);
+  }
+  .final-cta h2{color:#fff;font-size:clamp(26px,3.6vw,36px);}
+  .final-cta p{margin-top:12px;color:color-mix(in srgb,#fff 78%, transparent);font-size:16.5px;}
+  .final-cta .hero-ctas{justify-content:center;margin-top:28px;}
+  .final-cta .btn-ghost{border-color:color-mix(in srgb,#fff 40%, transparent);color:#fff;}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--line);padding:36px 0;}
+  .foot-row{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-soft);}
+
+  /* whatsapp floating button */
+  .fab{
+    position:fixed;right:20px;bottom:20px;z-index:50;
+    display:flex;align-items:center;gap:9px;
+    background:var(--green);color:#fff;text-decoration:none;
+    padding:13px 18px;border-radius:999px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;
+    box-shadow:0 12px 26px -8px rgba(46,125,70,0.55);
+  }
+  @media (max-width:560px){ .fab span.fab-text{display:none;} .fab{padding:14px;} }
+
+  @media (prefers-reduced-motion:reduce){ *{transition:none !important; scroll-behavior:auto !important;} }
+</style>
+
+<a class="fab" href="https://wa.me/525649065493" target="_blank" rel="noopener">
+  <svg width="20" height="20" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.01 3C9.38 3 4 8.38 4 15.01c0 2.35.62 4.56 1.7 6.47L4 29l7.73-1.65a11.9 11.9 0 0 0 4.28.8h.01c6.63 0 12.01-5.38 12.01-12.01C28.02 8.38 22.64 3 16.01 3zm0 21.8h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-4.59.98.98-4.47-.24-.38a9.78 9.78 0 0 1-1.51-5.24c0-5.44 4.43-9.87 9.88-9.87 2.64 0 5.12 1.03 6.98 2.9a9.8 9.8 0 0 1 2.89 6.98c0 5.45-4.43 9.87-9.97 9.87zm5.4-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47-.88-.78-1.47-1.75-1.65-2.05-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48 1.07 2.87 1.22 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.19 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35z"/></svg>
+  <span class="fab-text">¿Dudas? Escríbenos</span>
+</a>
+
+<header>
+  <div class="nav">
+    <div class="brand"><img class="brand-mark" src="logo-pa-oficial.png" alt="PA Aliméntate"> Aliméntate</div>
+    <nav class="nav-links">
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#que-es">Qué es</a>
+      <a href="#preguntas">Preguntas</a>
+    </nav>
+    <a class="btn btn-primary" href="https://go.bizne.mx/CM2" target="_blank" rel="noopener">Descargar app</a>
+  </div>
+</header>
+
+<div class="institutional-bar">
+  <div class="wrap">
+    <img src="ssc-logo.png" alt="Secretaría de Seguridad Ciudadana de la Ciudad de México">
+    <span class="divider"></span>
+    <p><strong>Programa oficial</strong> en alianza con la Secretaría de Seguridad Ciudadana de la Ciudad de México, exclusivo para elementos de la Policía Auxiliar.</p>
+  </div>
+</div>
+
+<main>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Beneficio para la Policía Auxiliar de la CDMX</span>
+        <h1 style="margin-top:18px;">Tu comida de cada quincena, <em>resuelta</em>.</h1>
+        <p class="hero-sub">
+          PA Aliméntate te da saldo para comer en cocinas y fondas cerca de tu punto de servicio,
+          sin usar efectivo. Descargas la app, validas tu identidad y empiezas a comer el mismo día.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://go.bizne.mx/CM2" target="_blank" rel="noopener">
+            ⬇ Descargar la app
+          </a>
+          <a class="btn btn-ghost" href="#como-funciona">Ver cómo funciona</a>
+        </div>
+        <div class="hero-note"><span class="dot-live"></span> +1,000 cocinas y fondas afiliadas · +2,000 Policías Auxiliares ya la usan.</div>
+        <div class="creators-chip">
+          <img src="alimento-seguro-logo.png" alt="Alimento Seguro">
+          <span>De los mismos creadores de <b>Alimento Seguro</b></span>
+        </div>
+      </div>
+
+      <div class="phone">
+        <div class="phone-screen">
+          <img src="home-pa.webp" alt="Pantalla principal de la app PA Aliméntate mostrando BzCoins disponibles y cocinas cercanas">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="video-section">
+    <div class="wrap">
+      <div class="video-frame">
+        <video controls playsinline preload="metadata" poster="ugc_poster.jpg">
+          <source src="ugc_avance.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="video-copy">
+        <span class="eyebrow">Te lo explicamos en video</span>
+        <h2 style="margin-top:14px;">En menos de un minuto, entiende cómo funciona.</h2>
+        <p>Un vistazo rápido a PA Aliméntate: qué es, cómo se activa tu saldo y cómo lo usas
+          para comer cerca de tu punto de servicio, sin efectivo.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-section" id="como-funciona">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Cómo funciona</span>
+        <h2 style="margin-top:14px;">De la descarga a tu primer taco, en 4 pasos.</h2>
+        <p>No necesitas tarjeta ni efectivo. Todo el proceso vive dentro de la app.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Descarga la app</h3>
+          <p>Entra al link de descarga y crea tu cuenta con tu número de elemento.</p>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Valida tu identidad</h3>
+          <p>Sube tu identificación desde la app. La revisión es rápida y la hace directo Bizne.</p>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Recibe tu saldo</h3>
+          <p>Cada quincena se te asignan BzCoins para gastar en comida, listos para usarse.</p>
+          <span class="step-arrow">→</span>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3>Come cerca de ti</h3>
+          <p>Ubica cocinas y fondas afiliadas en el mapa y paga desde la app, sin efectivo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="que-es">
+    <div class="wrap about-grid">
+      <div class="about-copy">
+        <span class="eyebrow">Qué es PA Aliméntate</span>
+        <h2 style="margin-top:14px;">Un beneficio de alimentación pensado para tu turno.</h2>
+        <p>
+          PA Aliméntate es un programa de Bizne en alianza con la Secretaría de Seguridad Ciudadana (SSC)
+          para los elementos de la Policía Auxiliar de la Ciudad de México. Su objetivo es simple:
+          que siempre tengas dónde y con qué comer cerca de tu punto de servicio.
+        </p>
+        <p>
+          Funciona como un monedero digital dentro de la app: recibes saldo periódico, lo usas en los
+          negocios afiliados ("Biznes") más cercanos a ti, y pagas después, sin necesidad de traer
+          efectivo contigo durante el turno.
+        </p>
+      </div>
+      <div>
+        <div class="stat-grid">
+          <div class="stat"><b>+1,000</b><span>cocinas y fondas afiliadas en la CDMX</span></div>
+          <div class="stat"><b>+2,000</b><span>Policías Auxiliares ya la usan</span></div>
+          <div class="stat"><b>$500</b><span>MXN de saldo asignados cada quincena</span></div>
+          <div class="stat"><b>0</b><span>efectivo necesario para pagar tu comida</span></div>
+        </div>
+        <div class="official-card">
+          <img src="ssc-logo.png" alt="Secretaría de Seguridad Ciudadana de la Ciudad de México">
+          <div>
+            <h4>Programa oficial de la SSC CDMX</h4>
+            <p>PA Aliméntate opera en alianza directa con la Secretaría de Seguridad Ciudadana, exclusivo para elementos activos de la Policía Auxiliar.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features-section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow" style="background:rgba(255,255,255,.14);color:#fff;">Por qué usarlo</span>
+        <h2 style="margin-top:14px;">Pensado para tu turno, no para hacer fila.</h2>
+        <p>Sin comisiones ocultas que tengas que adivinar, sin efectivo, sin vueltas.</p>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <div class="feature-ic">📍</div>
+          <h3>Cerca de tu punto</h3>
+          <p>El mapa te muestra las cocinas y fondas afiliadas más cercanas a donde estás.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-ic">💳</div>
+          <h3>Sin efectivo</h3>
+          <p>Pagas desde la app con tu saldo. Nada que cargar ni cambiar durante el turno.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-ic">⏱️</div>
+          <h3>Come ahora, paga después</h3>
+          <p>El cargo se hace directo desde tu saldo asignado, sin trámites en el momento.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-ic">🤝</div>
+          <h3>Recomienda tu fonda</h3>
+          <p>¿Comes en un lugar que no está afiliado? Recomiéndalo desde la app.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="preguntas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Preguntas frecuentes</span>
+        <h2 style="margin-top:14px;">Antes de descargarla</h2>
+      </div>
+      <div class="faq">
+        <details class="faq-item" open>
+          <summary>¿Quién puede usar PA Aliméntate? <span class="chev">+</span></summary>
+          <div class="faq-a">Los elementos activos de la Policía Auxiliar de la Ciudad de México. Es un programa oficial,
+            operado en alianza directa con la Secretaría de Seguridad Ciudadana. Te registras con tu número de elemento.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Cuándo puedo empezar a usar mi saldo? <span class="chev">+</span></summary>
+          <div class="faq-a">En cuanto tu identidad queda validada dentro de la app, tu saldo queda disponible
+            para usarse de inmediato: no tienes que esperar a la fecha de pago.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Dónde puedo usar mi saldo? <span class="chev">+</span></summary>
+          <div class="faq-a">En cualquiera de las más de 1,000 cocinas y fondas afiliadas dentro de la app. Usa el mapa
+            para ver las que están más cerca de tu punto de servicio.</div>
+        </details>
+        <details class="faq-item">
+          <summary>¿Necesito tarjeta o efectivo? <span class="chev">+</span></summary>
+          <div class="faq-a">No. Todo el pago se hace desde la app usando tu saldo. No necesitas traer efectivo
+            ni tarjeta durante tu turno.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Tengo una duda que no está aquí <span class="chev">+</span></summary>
+          <div class="faq-a">Escríbenos por WhatsApp al <a href="https://wa.me/525649065493" target="_blank" rel="noopener">+52 56 4906 5493</a>
+            y te ayudamos directamente.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="final-cta">
+        <h2>Descarga la app y come tranquilo esta quincena.</h2>
+        <p>El registro toma unos minutos. En cuanto tu identidad queda validada, tu saldo está listo para usarse.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" style="background:#fff;color:var(--maroon-700);box-shadow:0 14px 28px -12px rgba(0,0,0,0.35);" href="https://go.bizne.mx/CM2" target="_blank" rel="noopener">⬇ Descargar la app</a>
+          <a class="btn btn-ghost" href="https://wa.me/525649065493" target="_blank" rel="noopener">¿Dudas? Escríbenos por WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="brand" style="font-size:15px;"><img class="brand-mark" style="height:26px;" src="logo-pa-oficial.png" alt="PA Aliméntate"> Aliméntate · un programa de Bizne</div>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <span>Programa oficial en alianza con</span>
+      <img src="ssc-logo.png" alt="Secretaría de Seguridad Ciudadana de la Ciudad de México" style="height:30px;width:auto;">
+    </div>
+  </div>
+</footer>
